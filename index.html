@@ -5,7 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>수원 삼성 블루윙즈 온라인 역사관 · SINCE 1995</title>
 <meta name="description" content="1995년 창단부터 오늘까지, 수원 삼성 블루윙즈의 발자취를 전시실 순서대로 따라가는 온라인 역사관.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <style>
+/* ---------- 웹폰트: 경남 파이팅 (GFC RedSpirit) ---------- */
+@font-face{
+  font-family:'FightingGyeongnam';
+  src:url('https://cdn.jsdelivr.net/gh/Project-Noonnu/2607131603@gfcredspirit-black/gfcredspirit-black/GFCRedSpirit-Medium.woff2') format('woff2');
+  font-weight:500;
+  font-display:swap;
+}
+@font-face{
+  font-family:'FightingGyeongnam';
+  src:url('https://cdn.jsdelivr.net/gh/Project-Noonnu/2607131603@gfcredspirit-black/gfcredspirit-black/GFCRedSpirit-Bold.woff2') format('woff2');
+  font-weight:700;
+  font-display:swap;
+}
+@font-face{
+  font-family:'FightingGyeongnam';
+  src:url('https://cdn.jsdelivr.net/gh/Project-Noonnu/2607131603@gfcredspirit-black/gfcredspirit-black/GFCRedSpirit-Black.woff2') format('woff2');
+  font-weight:900;
+  font-display:swap;
+}
+
 :root{
   --navy:#0a1628;
   --navy-2:#0d1d33;
@@ -17,18 +38,19 @@
   --line:rgba(159,176,198,.16);
   --white:#f2f6fb;
   --shell:min(1120px,92vw);
+  --font:'FightingGyeongnam',-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","맑은 고딕",sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   background:var(--navy);
   color:var(--white);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","맑은 고딕",sans-serif;
+  font-family:var(--font);
   line-height:1.7;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-h1,h2,h3{line-height:1.25;font-weight:800;letter-spacing:-.02em}
+h1,h2,h3{line-height:1.25;font-weight:900;letter-spacing:-.02em}
 
 /* ---------- 공통 전시 레이아웃 ---------- */
 .shell{width:var(--shell);margin:0 auto}
@@ -106,7 +128,7 @@ section{position:relative;padding:clamp(72px,11vw,132px) 0}
 }
 .stat{background:var(--navy);padding:28px 24px}
 .stat dt{font-size:.72rem;letter-spacing:.2em;color:var(--fog);text-transform:uppercase;margin-bottom:10px}
-.stat dd{font-size:clamp(1.4rem,3.4vw,1.95rem);font-weight:800;letter-spacing:-.01em}
+.stat dd{font-size:clamp(1.4rem,3.4vw,1.95rem);font-weight:900;letter-spacing:-.01em}
 .stat dd small{display:block;font-size:.82rem;font-weight:500;color:var(--fog);letter-spacing:0;margin-top:6px}
 
 /* ---------- 제1전시실 · 연표 ---------- */
@@ -122,12 +144,22 @@ section{position:relative;padding:clamp(72px,11vw,132px) 0}
 }
 .tl-item[data-mark="gold"]::before{border-color:var(--gold);box-shadow:0 0 0 5px rgba(212,169,74,.12)}
 .tl-item[data-mark="dark"]::before{border-color:#7a4a4a}
-.tl-year{font-size:.95rem;font-weight:800;letter-spacing:.14em;color:var(--blue-lit);margin-bottom:6px}
+.tl-year{font-size:.95rem;font-weight:700;letter-spacing:.14em;color:var(--blue-lit);margin-bottom:6px}
 .tl-item[data-mark="gold"] .tl-year{color:var(--gold)}
 .tl-item[data-mark="dark"] .tl-year{color:#c98d8d}
 .tl-title{font-size:clamp(1.1rem,2.6vw,1.3rem);margin-bottom:8px}
 .tl-body{color:var(--fog);max-width:56ch}
 .tl-body b{color:var(--white);font-weight:700}
+.tl-video{margin-top:16px;max-width:56ch;text-align:left}
+.tl-video .frame{
+  position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:6px;
+  overflow:hidden;background:#000;
+}
+.tl-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.tl-video figcaption{
+  margin-top:8px;font-size:.76rem;line-height:1.6;color:var(--fog);opacity:.7;
+}
+.tl-video figcaption a{color:inherit}
 
 /* ---------- 제2전시실 · 트로피룸 ---------- */
 .trophies{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
@@ -159,18 +191,43 @@ section{position:relative;padding:clamp(72px,11vw,132px) 0}
 /* ---------- 제3전시실 · 레전드 ---------- */
 .legends{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px}
 .legend{
-  border:1px solid var(--line);border-radius:6px;padding:24px;
+  border:1px solid var(--line);border-radius:6px;overflow:hidden;
   background:var(--navy-2);transition:border-color .3s ease,transform .3s ease;
+  display:flex;flex-direction:column;
 }
 .legend:hover{border-color:rgba(74,140,232,.55);transform:translateY(-4px)}
-.legend .badge{
-  width:52px;height:52px;border-radius:50%;display:grid;place-items:center;
-  background:linear-gradient(145deg,var(--blue),#123a78);
-  font-weight:900;font-size:1.15rem;letter-spacing:-.02em;margin-bottom:16px;
+.legend figure{position:relative;margin:0;background:#08101d}
+.legend figure img{
+  display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%;
+  filter:saturate(.92) contrast(1.04);
+  transition:transform .5s ease,filter .3s ease;
 }
+.legend:hover figure img{transform:scale(1.04);filter:saturate(1) contrast(1.04)}
+.legend figure::after{
+  content:"";position:absolute;inset:auto 0 0 0;height:55%;pointer-events:none;
+  background:linear-gradient(to bottom,transparent,var(--navy-2));
+}
+.legend .no-photo{
+  width:100%;aspect-ratio:4/5;display:grid;place-items:center;text-align:center;
+  background:
+    repeating-linear-gradient(-45deg,rgba(159,176,198,.05) 0 8px,transparent 8px 16px),
+    linear-gradient(160deg,#122647,#0a1628);
+  color:var(--fog);font-size:.78rem;line-height:1.6;padding:16px;
+}
+.legend .no-photo svg{width:34px;height:auto;margin:0 auto 10px;display:block;opacity:.45}
+.legend .body{padding:20px 22px 22px;flex:1}
 .legend h3{font-size:1.1rem;margin-bottom:4px}
 .legend .role{font-size:.74rem;letter-spacing:.16em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
 .legend p{color:var(--fog);font-size:.92rem}
+.legend .credit{
+  margin-top:12px;padding-top:10px;border-top:1px solid var(--line);
+  font-size:.68rem;line-height:1.5;color:var(--fog);opacity:.62;
+}
+.legend .credit a{color:inherit}
+.photo-note{
+  margin-top:22px;border:1px dashed var(--line);border-radius:6px;
+  padding:16px 20px;color:var(--fog);font-size:.82rem;line-height:1.7;
+}
 .bench{margin-top:clamp(34px,5vw,48px);border-top:1px solid var(--line);padding-top:30px}
 .bench h3{font-size:.78rem;letter-spacing:.2em;color:var(--fog);text-transform:uppercase;margin-bottom:18px}
 .bench-line{display:flex;flex-wrap:wrap;gap:10px 8px;align-items:center}
@@ -203,7 +260,7 @@ section{position:relative;padding:clamp(72px,11vw,132px) 0}
 .epilogue .room-lead{margin:0 auto}
 .epilogue .room-lead b{color:var(--white)}
 .closing{
-  margin-top:clamp(36px,5vw,56px);font-size:clamp(1.3rem,3.6vw,2rem);font-weight:800;
+  margin-top:clamp(36px,5vw,56px);font-size:clamp(1.3rem,3.6vw,2rem);font-weight:900;
   background:linear-gradient(90deg,var(--blue-lit),var(--gold));
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
@@ -229,7 +286,8 @@ footer .disclaimer{opacity:.7;font-size:.8rem;max-width:62ch;margin:14px auto 0}
   .tl-item::before{left:auto}
   .tl-item:nth-child(odd)::before{right:-6.5px}
   .tl-item:nth-child(even)::before{left:-6.5px}
-  .tl-item:nth-child(odd) .tl-body{margin-left:auto}
+  .tl-item:nth-child(odd) .tl-body,
+  .tl-item:nth-child(odd) .tl-video{margin-left:auto}
 }
 @media (max-width:520px){
   .derby{grid-template-columns:1fr;text-align:center}
@@ -343,6 +401,12 @@ footer .disclaimer{opacity:.7;font-size:.8rem;max-width:62ch;margin:14px auto 0}
         <p class="tl-year">2008</p>
         <h3 class="tl-title">네 번째 리그 우승</h3>
         <p class="tl-body">통산 네 번째 K리그 정상. 현재까지 구단의 <b>마지막 리그 우승</b>입니다.</p>
+        <figure class="tl-video">
+          <div class="frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/bvKXjjw63AI" title="[K리그 하드털이] 2008 K리그 챔피언결정전 2차전 수원삼성 vs FC서울" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+          <figcaption>[K리그 하드털이] 2008 K리그 챔피언결정전 2차전 수원삼성 vs FC서울 — <a href="https://www.youtube.com/watch?v=bvKXjjw63AI" rel="noopener">K LEAGUE 공식 채널</a></figcaption>
+        </figure>
       </article>
 
       <article class="tl-item reveal" data-mark="gold">
@@ -361,6 +425,12 @@ footer .disclaimer{opacity:.7;font-size:.8rem;max-width:62ch;margin:14px auto 0}
         <p class="tl-year">2019</p>
         <h3 class="tl-title">마지막 트로피</h3>
         <p class="tl-body">통산 다섯 번째 FA컵 우승. 현재까지 구단이 들어올린 <b>가장 최근의 메이저 타이틀</b>입니다.</p>
+        <figure class="tl-video">
+          <div class="frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/8a6_tHVwD2c" title="2019 FA컵 결승 2차전 수원삼성 vs 대전코레일" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+          <figcaption>골 폭풍으로 달성한 FA컵 최초 5회 우승! 수원삼성 vs 대전코레일 (2019 FA컵 결승 2차전) — <a href="https://www.youtube.com/watch?v=8a6_tHVwD2c" rel="noopener">트리컬러</a></figcaption>
+        </figure>
       </article>
 
       <article class="tl-item reveal" data-mark="dark">
@@ -454,46 +524,80 @@ footer .disclaimer{opacity:.7;font-size:.8rem;max-width:62ch;margin:14px auto 0}
 
     <div class="legends">
       <article class="legend reveal">
-        <div class="badge">박</div>
-        <h3>박건하</h3><p class="role">Forward / Midfielder</p>
-        <p>창단 멤버로 합류해 선수 생활을 수원에서 마친 상징적인 원클럽맨. 훗날 감독으로도 팀을 이끌었습니다.</p>
+        <figure><img src="images/park-kunha.jpg" alt="박건하" loading="lazy" width="500" height="597"></figure>
+        <div class="body">
+          <h3>박건하</h3><p class="role">Forward / Midfielder</p>
+          <p>창단 멤버로 합류해 선수 생활을 수원에서 마친 상징적인 원클럽맨. 훗날 감독으로도 팀을 이끌었습니다.</p>
+          <p class="credit">사진 GOAL TV · <a href="https://commons.wikimedia.org/wiki/File:%EB%B0%95%EA%B1%B4%ED%95%98_%EA%B0%90%EB%8F%85.jpg" rel="noopener">CC BY 3.0</a></p>
+        </div>
       </article>
       <article class="legend reveal">
-        <div class="badge">고</div>
-        <h3>고종수</h3><p class="role">Midfielder</p>
-        <p>1990년대 후반 왼발 하나로 리그를 흔든 스타. 수원의 첫 전성기를 대표하는 얼굴입니다.</p>
+        <figure><img src="images/ko-jongsoo.jpg" alt="고종수" loading="lazy" width="500" height="1250"></figure>
+        <div class="body">
+          <h3>고종수</h3><p class="role">Midfielder</p>
+          <p>1990년대 후반 왼발 하나로 리그를 흔든 스타. 수원의 첫 전성기를 대표하는 얼굴입니다.</p>
+          <p class="credit">사진 블루포토 홍준기 · <a href="https://commons.wikimedia.org/wiki/File:Ko_Jong-Soo.jpg" rel="noopener">CC BY 4.0</a></p>
+        </div>
       </article>
       <article class="legend reveal">
-        <div class="badge">서</div>
-        <h3>서정원</h3><p class="role">Forward · Manager</p>
-        <p>선수로 우승을 맛보고, 감독으로 돌아와 다시 트로피를 들어올린 흔치 않은 이력의 주인공.</p>
+        <figure><img src="images/seo-jungwon.jpg" alt="서정원" loading="lazy" width="500" height="702"></figure>
+        <div class="body">
+          <h3>서정원</h3><p class="role">Forward · Manager</p>
+          <p>선수로 우승을 맛보고, 감독으로 돌아와 다시 트로피를 들어올린 흔치 않은 이력의 주인공.</p>
+          <p class="credit">사진 acrofan.com · <a href="https://commons.wikimedia.org/wiki/File:Seo_Jung-Won_from_acrofan.jpg" rel="noopener">CC BY-SA 3.0</a></p>
+        </div>
       </article>
       <article class="legend reveal">
-        <div class="badge">이</div>
-        <h3>이운재</h3><p class="role">Goalkeeper</p>
-        <p>아시아 제패기의 골문을 지킨 수문장. 결정적인 순간마다 팀을 살린 선방으로 기억됩니다.</p>
+        <figure><img src="images/lee-woonjae.jpg" alt="이운재" loading="lazy" width="500" height="415"></figure>
+        <div class="body">
+          <h3>이운재</h3><p class="role">Goalkeeper</p>
+          <p>아시아 제패기의 골문을 지킨 수문장. 결정적인 순간마다 팀을 살린 선방으로 기억됩니다.</p>
+          <p class="credit">사진 김효선 · <a href="https://commons.wikimedia.org/wiki/File:LeeWJ080413.jpg" rel="noopener">CC BY-SA 3.0</a></p>
+        </div>
       </article>
       <article class="legend reveal">
-        <div class="badge">김</div>
-        <h3>김진우</h3><p class="role">Midfielder</p>
-        <p>창단 초기 중원을 책임진 살림꾼. 수원에서만 뛴 원클럽맨으로 왕조의 기틀을 다졌습니다.</p>
+        <div class="no-photo">
+          <div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+            </svg>
+            자유 이용 사진<br>확보 실패
+          </div>
+        </div>
+        <div class="body">
+          <h3>김진우</h3><p class="role">Midfielder</p>
+          <p>창단 초기 중원을 책임진 살림꾼. 수원에서만 뛴 원클럽맨으로 왕조의 기틀을 다졌습니다.</p>
+          <p class="credit">자유 라이선스로 공개된 사진을 찾지 못해 비워 두었습니다.</p>
+        </div>
       </article>
       <article class="legend reveal">
-        <div class="badge">곽</div>
-        <h3>곽희주</h3><p class="role">Defender</p>
-        <p>오랜 기간 수비의 중심이자 주장. 세트피스 상황의 헤더 득점으로도 강렬한 인상을 남겼습니다.</p>
+        <figure><img src="images/kwak-heeju.jpg" alt="곽희주" loading="lazy" width="500" height="973"></figure>
+        <div class="body">
+          <h3>곽희주</h3><p class="role">Defender</p>
+          <p>오랜 기간 수비의 중심이자 주장. 세트피스 상황의 헤더 득점으로도 강렬한 인상을 남겼습니다.</p>
+          <p class="credit">사진 신유식 · <a href="https://commons.wikimedia.org/wiki/File:Kwak_Hee-Ju_2009.JPG" rel="noopener">CC BY-SA 2.5</a></p>
+        </div>
       </article>
       <article class="legend reveal">
-        <div class="badge">M</div>
-        <h3>마토</h3><p class="role">Defender</p>
-        <p>수비수이면서 정확한 킥으로 득점까지 책임진 외국인 선수. 2000년대 중후반 뒷문의 기둥이었습니다.</p>
+        <figure><img src="images/mato.jpg" alt="마토 네레틀야크" loading="lazy" width="500" height="808"></figure>
+        <div class="body">
+          <h3>마토</h3><p class="role">Defender</p>
+          <p>수비수이면서 정확한 킥으로 득점까지 책임진 외국인 선수. 2000년대 중후반 뒷문의 기둥이었습니다.</p>
+          <p class="credit">사진 JeongAhn · <a href="https://commons.wikimedia.org/wiki/File:Mato070819.jpg" rel="noopener">퍼블릭 도메인</a></p>
+        </div>
       </article>
       <article class="legend reveal">
-        <div class="badge">염</div>
-        <h3>염기훈</h3><p class="role">Winger · Captain</p>
-        <p>왼발 크로스로 팀의 공격을 설계한 캡틴. 후반기 수원을 가장 오래 대표한 이름입니다.</p>
+        <figure><img src="images/yeom-kihun.jpg" alt="염기훈" loading="lazy" width="500" height="1031"></figure>
+        <div class="body">
+          <h3>염기훈</h3><p class="role">Winger · Captain</p>
+          <p>왼발 크로스로 팀의 공격을 설계한 캡틴. 후반기 수원을 가장 오래 대표한 이름입니다.</p>
+          <p class="credit">사진 Camw · <a href="https://commons.wikimedia.org/wiki/File:Yeom_Ki-Hun.jpg" rel="noopener">CC BY-SA 3.0</a></p>
+        </div>
       </article>
     </div>
+
+    <p class="photo-note reveal">전시된 인물 사진은 모두 <b>위키미디어 공용의 자유 이용 라이선스(CC BY / CC BY-SA / 퍼블릭 도메인)</b> 자료이며,
+    각 카드에 촬영자와 라이선스를 표기했습니다. 언론사 보도사진 등 저작권이 있는 이미지는 사용하지 않았습니다.</p>
 
     <div class="bench reveal">
       <h3>Bench — 사령탑 계보</h3>
@@ -559,7 +663,8 @@ footer .disclaimer{opacity:.7;font-size:.8rem;max-width:62ch;margin:14px auto 0}
   <div class="shell">
     <p><b>수원 삼성 블루윙즈 온라인 역사관</b></p>
     <p>SINCE 1995 · 확정 기록 기준 2023년</p>
-    <p class="disclaimer">팬이 만든 비공식 아카이브 페이지입니다. 구단의 공식 엠블럼과 선수 사진을 사용하지 않았으며,
+    <p class="disclaimer">팬이 만든 비공식 아카이브 페이지입니다. 인물 사진은 위키미디어 공용의 자유 이용 라이선스 자료만 사용했고
+    촬영자와 라이선스를 각 카드에 표기했으며, 영상은 유튜브 원본을 임베드했습니다.
     정확한 기록은 구단 공식 홈페이지와 한국프로축구연맹 자료를 참고하세요.</p>
   </div>
 </footer>
