@@ -86,7 +86,10 @@ section{position:relative;padding:clamp(72px,11vw,132px) 0}
   background:linear-gradient(to bottom,transparent,var(--navy));pointer-events:none;
 }
 .hero-inner{position:relative;z-index:2}
-.crest{width:clamp(88px,13vw,128px);height:auto;margin:0 auto 30px;display:block}
+.crest{
+  width:clamp(104px,15vw,158px);height:auto;margin:0 auto 28px;display:block;
+  filter:drop-shadow(0 14px 30px rgba(0,0,0,.55)) drop-shadow(0 0 26px rgba(74,140,232,.22));
+}
 .wordmark{
   font-size:clamp(2.9rem,11vw,7rem);font-weight:900;letter-spacing:.06em;
   background:linear-gradient(180deg,#ffffff 12%,var(--blue-lit) 96%);
@@ -300,19 +303,7 @@ footer .disclaimer{opacity:.7;font-size:.8rem;max-width:62ch;margin:14px auto 0}
 <!-- ============ 히어로 ============ -->
 <header class="hero">
   <div class="hero-inner">
-    <svg class="crest" viewBox="0 0 120 120" aria-hidden="true">
-      <defs>
-        <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#4a8ce8"/><stop offset="100%" stop-color="#123a78"/>
-        </linearGradient>
-      </defs>
-      <circle cx="60" cy="60" r="55" fill="url(#cg)" opacity=".22"/>
-      <circle cx="60" cy="60" r="55" fill="none" stroke="#4a8ce8" stroke-width="1.5"/>
-      <circle cx="60" cy="60" r="45" fill="none" stroke="#d4a94a" stroke-width=".8" opacity=".6"/>
-      <path d="M60 34 L88 58 Q74 60 60 72 Q46 60 32 58 Z" fill="#4a8ce8" opacity=".9"/>
-      <path d="M60 48 L80 66 Q70 68 60 78 Q50 68 40 66 Z" fill="#f2f6fb" opacity=".85"/>
-      <circle cx="60" cy="88" r="4" fill="#d4a94a"/>
-    </svg>
+    <img class="crest" src="images/crest.png" alt="수원 삼성 블루윙즈 엠블럼" width="347" height="422">
     <h1 class="wordmark">BLUEWINGS</h1>
     <p class="since">SINCE 1995</p>
     <p class="hero-sub">수원 삼성 블루윙즈 온라인 역사관</p>
@@ -663,9 +654,10 @@ footer .disclaimer{opacity:.7;font-size:.8rem;max-width:62ch;margin:14px auto 0}
   <div class="shell">
     <p><b>수원 삼성 블루윙즈 온라인 역사관</b></p>
     <p>SINCE 1995 · 확정 기록 기준 2023년</p>
-    <p class="disclaimer">팬이 만든 비공식 아카이브 페이지입니다. 인물 사진은 위키미디어 공용의 자유 이용 라이선스 자료만 사용했고
-    촬영자와 라이선스를 각 카드에 표기했으며, 영상은 유튜브 원본을 임베드했습니다.
-    정확한 기록은 구단 공식 홈페이지와 한국프로축구연맹 자료를 참고하세요.</p>
+    <p class="disclaimer">팬이 만든 비공식 아카이브 페이지이며 구단과 아무런 제휴 관계가 없습니다.
+    구단 엠블럼은 수원 삼성 블루윙즈의 상표로, 구단을 식별하기 위한 목적으로만 표시했습니다.
+    인물 사진은 위키미디어 공용의 자유 이용 라이선스 자료만 사용했고 촬영자와 라이선스를 각 카드에 표기했으며,
+    영상은 유튜브 원본을 임베드했습니다. 정확한 기록은 구단 공식 홈페이지와 한국프로축구연맹 자료를 참고하세요.</p>
   </div>
 </footer>
 
